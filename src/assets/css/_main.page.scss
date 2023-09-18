@@ -1,0 +1,47 @@
+@use "sass:map";
+@import "./_variables";                                                                                     
+
+$xs-size: map.get($breakpoints, "xs");
+$sm-size: map.get($breakpoints, "sm");
+$md-size: map.get($breakpoints, "md");
+$desktop-size: calc(25% - #{$base-spacing});
+$tablet-size: calc(33.3333333% - #{$base-spacing});
+$phone-size: calc(50% - #{$base-spacing});
+
+.header, .subheading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main {
+    margin-top: #{$base-spacing * 1.5};
+    display: flex;
+    flex-wrap: wrap;
+    gap: #{$base-spacing};
+
+    .main_col {
+        min-width: #{$desktop-size}; 
+        max-width: #{$desktop-size}; 
+    }
+
+    @media only screen and (max-width: #{$sm-size}) {
+        .main_col {
+            min-width: #{$phone-size}; 
+            max-width: #{$phone-size}; 
+        }
+    }
+
+    @media only screen and (min-width: #{$sm-size}) and (max-width: #{$md-size}) {
+        .main_col {
+            min-width: #{$tablet-size}; 
+            max-width: #{$tablet-size}; 
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    margin-top: #{$base-spacing};
+    justify-content: flex-end;
+}
